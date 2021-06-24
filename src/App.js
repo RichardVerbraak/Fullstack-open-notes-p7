@@ -15,8 +15,14 @@ const useField = (type) => {
 	}
 }
 
+// Useful resource on using useEffect inside custom hooks: https://blog.logrocket.com/guide-to-react-useeffect-hook/
+// Fetching data is done inside the useEffect + a dependecy so it won't fetch again on every re-render
+// which is what happens when you leave out the useEffect hook and fetchResources will be re-created and loop infinitely
+
 const useResource = (baseUrl) => {
 	const [resources, setResources] = useState([])
+
+	console.log(resources)
 
 	useEffect(() => {
 		const fetchResources = async () => {
